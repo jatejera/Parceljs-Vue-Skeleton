@@ -1,0 +1,28 @@
+{
+  "name": "blanksite",
+  "version": "1.0.0",
+  "description": "Blank Site",
+  "main": "index.html",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --public-url ./ --out-dir www"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "vue": "^2.5.16",
+    "vue-hot-reload-api": "^2.3.0"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.1.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "cssnano": "^4.0.3",
+    "node-sass": "^4.9.2",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "author": "Julian Tejera (jats.tejera@gmail.com)",
+  "license": "MIT"
+}
