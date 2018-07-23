@@ -5,27 +5,22 @@
     <h2>Essential Links</h2>
     <ul>
       <li><input type="text" v-model='name'></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">{{ currentName }}</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
+      <li>{{ currentName }}</li>
+      <li>{{ currentMessage }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-    export default {
+    import axios from 'axios';
+
+    export default  {
         name: 'app',
         data: function() {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                name: 'sss'
+                name: 'test1',
+                message: 'test2'
             }
         },
         methods: {
@@ -36,15 +31,33 @@
         watch: {
             name: function(value) {
                 console.log(value);
+            },
+            message: function(value){
+                console.log(value + "too");
             }
 
         },
         computed: {
             currentName: function() {
                 return this.name;
+            },
+            currentMessage: function(){
+                return this.message;
             }
+        },
+        mounted() {
+            axios.get(`https://www.mocky.io/v2/5185415ba171ea3a00704eed`)
+                .then(response => {
+                    // JSON responses are automatically parsed.
+                    console.log(response.data);
+                    this.message = response.data.hello;
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                })
+            
+            
         }
     }
 
 </script>
-
